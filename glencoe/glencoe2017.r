@@ -93,7 +93,7 @@ plotdatapos <- melt(data = positions, id = "Name")
 plotdatapos <- subset(plotdatapos, Name != "Harry Kingston" | variable != "Position1")
 plotdatapos <- merge(x = plotdatapos, y = distances, by.x = "variable", by.y = "checkpoint2", all = TRUE)
 ggplot(data = plotdatapos, aes(x = dist, y = value, group = Name)) + 
-  geom_line(color = "blue", alpha = 0.2) +
+  geom_line(color = "blue", alpha = 0.4) +
   geom_line(data = subset(plotdatapos, Name == "Wouter Hamelinck"), aes(x = dist, y = value), color = "red") +
   theme(
     plot.background = element_rect(fill = "black"),
