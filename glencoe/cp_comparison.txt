@@ -1,0 +1,18 @@
+CP2015	CP2016	Name	Remark
+1	1	Altnafeach	Map puts CP1 in 2015 at the bottom of Curved Ridge instead of at the farm.
+2	2	Stob Dearg	
+3	3	Buachaille Etiv More	
+4	4	Lairig Gartain	
+5	5	Lairig Eilde Down	
+6	6	Lairig Eilde Up	
+	7	Stob Coire Sgreamhach	
+7	8	Bidean nam Bian	
+8	9	Stob Coire nan Lochan	
+9	10	Bidean nam Bian	
+		Stob Coire nam Beith	Marker on the 2015 map, but no times
+10	11	Loch Achriochtan	Halfway point
+11	12	Sgor nam Fiannaidh	
+12	13	Am Bodach	
+13	14	Sron a' Choire Odhair-bhig	
+14	15	WHW	Not the same place
+15		Altnafeach	
