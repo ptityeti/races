@@ -60,4 +60,27 @@ monterosa.results <- monterosa.results %>%
   mutate(country = gsub("<img src='../../images/bandiere_NEW/.{3}.gif' class=\"img-responsive\" title='.{3}' data-toggle='tooltip' ><b>", '', country)) %>% 
   mutate(country = gsub('</b>', '', country))
 monterosa.results[3, "country"] <- "ESP" # country for Jornet-Forsberg is not set
+# manually set times and rankings for Jornet-Forsberg
+# the missing country has messed up my extraction
+monterosa.results[3, "cp1.time"] <- "1:56:33"
+monterosa.results[3, "cp2.time"] <- "3:36:48"
+monterosa.results[3, "cp3.time"] <- "4:13:25"
+monterosa.results[3, "cp4.time"] <- "5:03:56"
+# clean up ranks
+monterosa.results <- monterosa.results %>% mutate(cp1.rank = as.numeric(gsub("([^0-9])",'', cp1.rank)))
+monterosa.results <- monterosa.results %>% mutate(cp2.rank = as.numeric(gsub("([^0-9])",'', cp2.rank)))
+monterosa.results <- monterosa.results %>% mutate(cp3.rank = as.numeric(gsub("([^0-9])",'', cp3.rank)))
+monterosa.results <- monterosa.results %>% mutate(cp4.rank = as.numeric(gsub("([^0-9])",'', cp4.rank)))
+# add numeric times (in hours)
+monterosa.results <- monterosa.results %>%
+  mutate(
+    cp1.time.numeric = as.numeric(substr(cp1.time, 1,1)) + as.numeric(substr(cp1.time, 3,4)) / 60 + as.numeric(substr(cp1.time, 6,7)) / 3600,
+    cp2.time.numeric = as.numeric(substr(cp2.time, 1,1)) + as.numeric(substr(cp2.time, 3,4)) / 60 + as.numeric(substr(cp2.time, 6,7)) / 3600,
+    cp3.time.numeric = as.numeric(substr(cp3.time, 1,1)) + as.numeric(substr(cp3.time, 3,4)) / 60 + as.numeric(substr(cp3.time, 6,7)) / 3600,
+    cp4.time.numeric = as.numeric(substr(cp4.time, 1,1)) + as.numeric(substr(cp4.time, 3,4)) / 60 + as.numeric(substr(cp4.time, 6,7)) / 3600
+  )
+# for teams that don't have an intermediate time this will give then NA in subsequent checkpoints
+# doesn't matter to me because those teams probably didn't go the whole way.
 
+# write out the work for easy reference
+write.table(monterosa.results, file = 'results_monterosa_2018.txt', sep = '\t', quote = FALSE, row.names = FALSE)
